@@ -1,0 +1,104 @@
+<html ng-app="ExcelApp">
+    <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<body>
+    <div ng-controller="homeController">
+        <div class="row">
+        <div class="col-lg-4 col-md-4">
+        <div class="form-group row">
+          <label for="example-date-input" class="col-xs-2 col-form-label">Date</label>
+          <div class="col-xs-10">
+            <input class="form-control" ng-model="entry.date" type="text" id="example-date-input">
+          </div>
+        </div>
+        
+        
+        <div class="form-group row">
+          <label for="example-text-input" class="col-xs-2 col-form-label">Particulars/Suppliers</label>
+          <div class="col-xs-10">
+            <input class="form-control" ng-model="entry.supplier" type="text" id="example-text-input">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">OR/SI Number</label>
+      <div class="col-xs-10">
+        <input class="form-control" ng-model="entry.OR" type="text" id="example-text-input">
+      </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">TIN</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="text" ng-model="entry.TIN" id="example-text-input">
+      </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Amount</label>
+      <div class="col-xs-10">
+        <input class="form-control" ng-model="entry.amount" type="text" id="example-text-input">
+      </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Representation</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="text" ng-model="entry.rep" id="example-text-input">
+      </div>
+    </div>
+
+        <div class="form-group row">
+      <label for="example-text-input" class="col-xs-2 col-form-label">Transportation</label>
+      <div class="col-xs-10">
+        <input class="form-control" type="text" ng-model="entry.transpo" id="example-text-input">
+      </div>
+    </div>
+            <button ng-click="addEntry()" class="btn btn-default">Add</button>
+        </div>
+        <div class="col-lg-8 col-md-8">
+        <div class="row">
+        
+            <table class="table">
+              <thead>
+                <tr>
+                    <th>*remove*</th>
+                  <th>Date</th>
+                  <th>Particulars/Suppliers</th>
+                  <th>OR/SI Number</th>
+                    <th>TIN</th>
+                    <th>Amount</th>
+                  <th>Representation</th>
+                  <th>Transportation</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="resibo in resibos track by $index">
+                    <td ng-click="remove($index)"><button>x</button></td>
+                  <td>{{resibo.date | date}}</td>
+                  <td>{{resibo.supplier}}</td>
+                  <td>{{resibo.OR}}</td>
+                    <td>{{resibo.TIN}}</td>
+                  <td>{{resibo.amount}}</td>
+                  <td>{{resibo.rep}}</td>
+                    <td>{{resibo.transpo}}</td>
+                </tr>
+              </tbody>
+            </table>
+        </div>
+            <button ng-click="downloadCSV()" class="btn btn-success">Download</button>
+            
+        </div>
+        
+        </div>
+    </div>
+</body>
+    <script src="scripts/jquery-1.10.2.js"></script>
+    <script src="scripts/bootstrap.js"></script>
+    <script src="scripts/angular.js"></script>
+    <script src="scripts/angular-route.js"></script>
+    <script src="scripts/angular-resource.js"></script>
+    <script src="app.js"></script>
+    <script src="controllers/home-ctrl.js"></script>
+</html>
